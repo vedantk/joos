@@ -1,0 +1,120 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[margin=2cm]{geometry}
+\usepackage{graphicx}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\tuple}[1]{\langle #1 \rangle}
+\newcommand{\centeredimage}[1]{\begin{center}\includegraphics{#1}\end{center}}
+
+\title{Theoretical Physics (G. Joos) - Exercises}
+\author{Vedant Kumar}
+
+\begin{document}
+\maketitle
+
+\section{Vector Analysis}
+
+\begin{enumerate}[1)]
+    \item Express that three vectors with the same orientation form a closed
+        triangle.
+        
+        $A + B - C = 0$. This is a little strange, because you have to
+        imagine each vector as a ray with an origin.
+    \item
+        \begin{enumerate}[a)]
+            \item Check that two vectors are parallel.
+                
+                $\frac{A}{|A|} = \frac{B}{|B|}$. Since the origin is
+                invariant, only scale and direction matter.
+            \item Check that three vectors are coplanar (assume $\R^3$, and
+                that the vectors are not parallel).
+                
+                Some linear combination of $A$ and $B$ must give $C$, since
+                the subspace spanned by the plane has dimension 2:
+                $aA + bB = C$. 
+        \end{enumerate}
+    \item Give the geometric significance of $(A+B)^2 = A^2 + B^2 + 2AB$.
+
+        \centeredimage{p1-3}
+    \item What does $(A+B)(A-B)$ mean when $A^2=B^2$?
+
+        Nothing. $A^2 - AB + AB - B^2 = 0$.
+    \item Calculate the angle b/w $S_n = \tuple{\cos x_n, \cos y_n, \cos
+        z_n}$, $n \in \{1, 2\}$.
+
+        \begin{align*}
+            S_1S_2 &= \cos x_1\cos x_2 + \cos y_1\cos y_2 + \cos z_1\cos z_2
+                      \\
+                   &= |S_1||S_2|\cos \alpha \\
+                   &= \sqrt{(\cos^2 x_1 + \cos^2 y_1 + \cos^2 z_1)}
+                      \sqrt{(\cos^2 x_2 + \cos^2 y_2 + \cos^2 z_2)}
+                      \cos \alpha \\
+            \alpha &= \cos^{-1}\left( \frac{
+                \cos x_1\cos x_2 + \cos y_1\cos y_2 + \cos z_1\cos z_2
+            }{
+                \sqrt{(\cos^2 x_1 + \cos^2 y_1 + \cos^2 z_1)}
+                \sqrt{(\cos^2 x_2 + \cos^2 y_2 + \cos^2 z_2)}
+            } \right)
+        \end{align*}
+    \item Verify: $[A(B+C)] = [AB] + [AC]$. 
+
+        \begin{align*}
+            [AB] &= \tuple{(A_yB_z - A_zB_y), (A_zB_x - A_xB_z), (A_xB_y -
+            A_yB_x)} \\
+            [AC] &= \tuple{(A_yC_z - A_zC_y), (A_zC_x - A_xC_z), (A_xC_y -
+            A_yC_x)} \\
+            [AB] + [AC] &= \tuple{A_y(B_z+C_z) - A_z(B_y+C_y),
+                                  A_z(B_x+C_x) - A_x(B_z+C_z),
+                                  A_x(B_y+C_y) - A_y(B_y+C_y)} \\
+                        &= [A(B+C)]
+        \end{align*}
+    \item What is the value of $[AB]^2 + (AB)^2$?
+
+        It's $|A|^2|B|^2\sin^2\theta + |A|^2|B|^2\cos^2\theta$, i.e just
+        $A^2B^2$.
+
+    \item
+        \begin{enumerate}
+            \item Give the plane equation given some point $p_0$ on the
+                plane and the normal:
+
+                $n(p - p_0) = 0$.
+            \item Give the distance of a point $r_0$ from a plane:
+
+                If we start at $r_0$ and move along an axis defined by the
+                plane normal, we'll take the shortest path towards the
+                plane. Assuming a unit normal, we hit the plane when:
+                \begin{align*}
+                    0 &= ((r_0 + \alpha n) - p_0)n \\
+                    0 &= (r_0 + \alpha n)n - p_0n \\
+                    0 &= r_0n + \alpha - p_0n \\
+                    \alpha &= n(p_0 - r_0)
+                \end{align*}
+
+                A smarter way of looking at this is that the shortest path
+                from $r_0$ to the plane is given by the projection of $p_0 -
+                r_0$ onto the axis defined by the normal.
+            \item Define a plane given three points (not all collinear):
+
+                $[(r_1 - r_0)(r_2 - r_0)](p - r_0) = 0$.
+        \end{enumerate}
+    \item Simplify: $[[AB][CD]]$.
+
+        Let $E = [AB]$. Then:
+        \begin{align*}
+            [E[CD]] &= C(ED) - D(EC) \\
+                    &= C([AB]D) - D([AB]C)
+        \end{align*}
+
+        Equivalently we can write $F = [CD]$ and get:
+        \begin{align*}
+            [[AB]F] &= F(AB) - B(AF) \\
+                    &= [CD](AB) - B(A[CD])
+        \end{align*}
+\end{enumerate}
+
+\end{document}
