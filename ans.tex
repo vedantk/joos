@@ -85,19 +85,20 @@
                 $n(p - p_0) = 0$.
             \item Give the distance of a point $r_0$ from a plane:
 
-                If we start at $r_0$ and move along an axis defined by the
-                plane normal, we'll take the shortest path towards the
-                plane. Assuming a unit normal, we hit the plane when:
+                The shortest path from $r_0$ to the plane is given by the
+                projection of $p_0 - r_0$ onto the axis defined by the
+                normal, i.e $n(p_0 - r_0)$.
+
+                Here's another way to look at this. We can start at $r_0$
+                and move along an axis defined by the plane normal to take the
+                shortest path towards the plane. Assuming a unit normal, we hit
+                the plane when:
                 \begin{align*}
                     0 &= ((r_0 + \alpha n) - p_0)n \\
                     0 &= (r_0 + \alpha n)n - p_0n \\
                     0 &= r_0n + \alpha - p_0n \\
                     \alpha &= n(p_0 - r_0)
                 \end{align*}
-
-                A smarter way of looking at this is that the shortest path
-                from $r_0$ to the plane is given by the projection of $p_0 -
-                r_0$ onto the axis defined by the normal.
             \item Define a plane given three points (not all collinear):
 
                 $[(r_1 - r_0)(r_2 - r_0)](p - r_0) = 0$.
