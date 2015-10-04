@@ -22,8 +22,7 @@
     \item Express that three vectors with the same orientation form a closed
         triangle.
         
-        $A + B - C = 0$. This is a little strange, because you have to
-        imagine each vector as a ray with an origin.
+        $A + B + C = 0$. 
     \item
         \begin{enumerate}[a)]
             \item Check that two vectors are parallel.
@@ -37,22 +36,26 @@
                 the subspace spanned by the plane has dimension 2:
                 $aA + bB = C$. 
         \end{enumerate}
-    \item Give the geometric significance of $(A+B)^2 = A^2 + B^2 + 2AB$.
+
+    \item Give the geometric significance of
+        $(A+B)^2 = A^2 + B^2 + 2(A \cdot B)$.
 
         \centeredimage{p1-3}
-    \item What does $(A+B)(A-B)$ mean when $A^2=B^2$?
 
-        Nothing. $A^2 - AB + AB - B^2 = 0$.
+    \item What is $(A+B) \cdot (A-B)$ when $A^2=B^2$?
+
+        $A^2 - AB + AB - B^2 = 0$, so the two terms are orthogonal.
+
     \item Calculate the angle b/w $S_n = \tuple{\cos x_n, \cos y_n, \cos
         z_n}$, $n \in \{1, 2\}$.
 
         \begin{align*}
-            S_1S_2 &= \cos x_1\cos x_2 + \cos y_1\cos y_2 + \cos z_1\cos z_2
-                      \\
-                   &= |S_1||S_2|\cos \alpha \\
-                   &= \sqrt{(\cos^2 x_1 + \cos^2 y_1 + \cos^2 z_1)}
-                      \sqrt{(\cos^2 x_2 + \cos^2 y_2 + \cos^2 z_2)}
-                      \cos \alpha \\
+            S_1 \cdot S_2 &=
+                 \cos x_1\cos x_2 + \cos y_1\cos y_2 + \cos z_1\cos z_2 \\
+                          &= |S_1||S_2|\cos \alpha \\
+                          &= \sqrt{(\cos^2 x_1 + \cos^2 y_1 + \cos^2 z_1)}
+                             \sqrt{(\cos^2 x_2 + \cos^2 y_2 + \cos^2 z_2)}
+                             \cos \alpha \\
             \alpha &= \cos^{-1}\left( \frac{
                 \cos x_1\cos x_2 + \cos y_1\cos y_2 + \cos z_1\cos z_2
             }{
@@ -60,62 +63,84 @@
                 \sqrt{(\cos^2 x_2 + \cos^2 y_2 + \cos^2 z_2)}
             } \right)
         \end{align*}
-    \item Verify: $[A(B+C)] = [AB] + [AC]$. 
+
+    \item Verify: $A \times (B+C) = A \times B + A \times C$. 
 
         \begin{align*}
-            [AB] &= \tuple{(A_yB_z - A_zB_y), (A_zB_x - A_xB_z), (A_xB_y -
-            A_yB_x)} \\
-            [AC] &= \tuple{(A_yC_z - A_zC_y), (A_zC_x - A_xC_z), (A_xC_y -
-            A_yC_x)} \\
-            [AB] + [AC] &= \tuple{A_y(B_z+C_z) - A_z(B_y+C_y),
-                                  A_z(B_x+C_x) - A_x(B_z+C_z),
-                                  A_x(B_y+C_y) - A_y(B_y+C_y)} \\
-                        &= [A(B+C)]
+            A \times B &= \tuple{(A_yB_z - A_zB_y), (A_zB_x - A_xB_z),
+                                 (A_xB_y - A_yB_x)} \\
+            A \times C &= \tuple{(A_yC_z - A_zC_y), (A_zC_x - A_xC_z),
+                                 (A_xC_y - A_yC_x)} \\
+            A \times B + A \times C &= \tuple{A_y(B_z+C_z) - A_z(B_y+C_y),
+                                              A_z(B_x+C_x) - A_x(B_z+C_z),
+                                              A_x(B_y+C_y) - A_y(B_y+C_y)} \\
+                       &= A \times (B+C)
         \end{align*}
-    \item What is the value of $[AB]^2 + (AB)^2$?
 
-        It's $|A|^2|B|^2\sin^2\theta + |A|^2|B|^2\cos^2\theta$, i.e just
-        $A^2B^2$.
+    \item What is the value of $(A \times B)^2 + (A \cdot B)^2$?
+
+        \begin{align*}
+            (A \times B)^2 + (A \cdot B)^2 &=
+            |A \times B|^2 + |A \cdot B|^2 \\
+            &= (|A||B|\sin \theta)^2 + (|A||B|\cos \theta)^2 \\
+            &= |A|^2|B|^2(\sin^2 \theta + \cos^2 \theta) \\
+            &= |A|^2|B|^2
+        \end{align*}
 
     \item
         \begin{enumerate}
             \item Give the plane equation given some point $p_0$ on the
                 plane and the normal:
 
-                $n(p - p_0) = 0$.
+                $n \cdot (p - p_0) = 0$.
             \item Give the distance of a point $r_0$ from a plane:
 
                 The shortest path from $r_0$ to the plane is given by the
                 projection of $p_0 - r_0$ onto the axis defined by the
-                normal, i.e $n(p_0 - r_0)$.
+                normal, i.e $n \cdot (p_0 - r_0)$.
 
                 Here's another way to look at this. We can start at $r_0$
                 and move along an axis defined by the plane normal to take the
                 shortest path towards the plane. Assuming a unit normal, we hit
                 the plane when:
                 \begin{align*}
-                    0 &= ((r_0 + \alpha n) - p_0)n \\
-                    0 &= (r_0 + \alpha n)n - p_0n \\
-                    0 &= r_0n + \alpha - p_0n \\
-                    \alpha &= n(p_0 - r_0)
+                    0 &= ((r_0 + \alpha n) - p_0) \cdot n \\
+                    0 &= (r_0 + \alpha n) \cdot n - p_0 \cdot n \\
+                    0 &= r_0 \cdot n + \alpha - p_0 \cdot n \\
+                    \alpha &= n \cdot (p_0 - r_0)
                 \end{align*}
             \item Define a plane given three points (not all collinear):
 
-                $[(r_1 - r_0)(r_2 - r_0)](p - r_0) = 0$.
+                All points $p$ s.t
+                $[(r_1 - r_0) \times (r_2 - r_0)](p - r_0) = 0$.
         \end{enumerate}
-    \item Simplify: $[[AB][CD]]$.
 
-        Let $E = [AB]$. Then:
+    \item Simplify: $(A \times B) \times (C \times D)$.
+
+        Let $E = A \times B$. Then:
         \begin{align*}
-            [E[CD]] &= C(ED) - D(EC) \\
-                    &= C([AB]D) - D([AB]C)
+            E \times (C \times D) = C(E \cdot D) - D(E \cdot C)
         \end{align*}
 
-        Equivalently we can write $F = [CD]$ and get:
+        Equivalently we can write $F = C \times D$ and get:
         \begin{align*}
-            [[AB]F] &= F(AB) - B(AF) \\
-                    &= [CD](AB) - B(A[CD])
+            (A \times B) \times F &= -F \times (A \times B) \\
+                                  &= A(-F \cdot B) - B(-F \cdot A) \\
+                                  &= B(A \cdot F) - A(B \cdot F)
         \end{align*}
+
+    \item When is $A \times \frac{dA}{du} = 0$?
+
+        When $A$ is constant and/or parallel to $\frac{dA}{du}$.
+
+    \item Imagine a surface $A$ (e.g, the shell of a sphere) and a boundary
+        curve $R$ of $A$ restricted to a plane (e.g, its equator). Show that
+        $\int_R (b \times r) dR = 0$.
+
+        In this case, imagine that the sphere is centered at the origin. The
+        binormal at a point $r$ on the equator points `up' ($\hat{k}$) and
+        $r$ itself points `outwards'. The cross product is just the tangent
+        vector: integrated around a closed curve, this gives 0.
 \end{enumerate}
 
 \end{document}
